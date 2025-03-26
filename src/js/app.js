@@ -1,8 +1,23 @@
 const btn = document.querySelector('.btn');
-const textContainer = document.querySelector('.text-container');
+const textWrap = document.querySelector('.text-wrap');
+const textContainer = textWrap.querySelector('.text-container');
 
-btn.addEventListener('click', (e) => {
-    e.preventDefault();
+textWrap.style.height = `${textContainer.scrollHeight}px`
 
-    textContainer.classList.toggle('hidden');
+btn.addEventListener('click', () => {
+    const isCollapsed = textWrap.classList.contains('collapsed');
+
+    if (isCollapsed) {
+        // Разворачиваем
+        textWrap.style.borderWidth = '1px';
+        setTimeout(() => {
+            textWrap.style.height = `${textContainer.scrollHeight}px`;
+            textWrap.classList.remove('collapsed');
+        }, 10)
+    } else {
+        // Сворачиваем
+        textWrap.style.height = '0';
+        textWrap.style.borderWidth = '0';
+        textWrap.classList.add('collapsed');
+    }
 })

@@ -5,19 +5,25 @@ body {
     font-size: 16px;     /* Размер шрифта по умолчанию */
     line-height: 1.5;    /* Межстрочный интервал */
     color: #333;         /* Цвет текста (серо-чёрный) */
-    background-color: #fff; /* Белый фон (можно изменить) */
+    background-color: #d8d0d0; /* Белый фон (можно изменить) */
     min-height: 100vh;   /* Минимальная высота = высота экрана */
 }
 
 .widget-container {
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+    min-width: 0px;
     width: 400px;
     margin: 10vh 10vw 0;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
 .btn {
     max-width: 80px;
+    margin-bottom: 15px;
+    padding: 8px 15px;
     box-sizing: border-box;
     background-color: blue;
     border: 3px solid lightskyblue;
@@ -25,13 +31,22 @@ body {
     cursor: pointer;
 }
 
-.text-container {
+.text-wrap {
     border: 1px solid grey;
-    margin: 20px auto 0;
-    padding: 10px;
-    box-sizing: border-box;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: height 0.3s ease, border-width 0.1s ease 0.2s;
 }
 
-.hidden {
-    display: none;
+.text-wrap.collapsed {
+    border-width: 0;
+    transition: height 0.3s ease, border-width 0s ease 0.3s;
+}
+
+.text-container {
+    padding: 15px;
+}
+
+.collapsed {
+    height: 0 !important;
 }
